@@ -5,6 +5,7 @@ const mydata = require('./todos.json')
 // logger
 
 app.use(async (ctx, next) => {
+  console.log('request', ctx.url);
     await next();
     const rt = ctx.response.get('X-Response-Time');
       console.log(ctx.request.url==='/');
