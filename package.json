@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/wzqwangyoucao/todoapp/issues"
   },
-  "homepage": "https://github.com/wzqwangyoucao/todoapp#readme"
+  "homepage": "https://github.com/wzqwangyoucao/todoapp#readme",
+  "dependencies": {
+    "koa": "^2.5.3"
+  }
 }
