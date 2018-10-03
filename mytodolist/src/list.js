@@ -26,11 +26,23 @@ class Mylist extends React.Component {
         )
     }
     addlist(){
-        this.setState(
-            {
-                data:[...this.state.data,this.state.last]
-            }
-        )
+        console.log(!this.state.data[this.state.data.length-1]==this.state.last)
+        if(this.state.data[this.state.data.length-1]!=this.state.last){
+            this.setState(
+                {
+                    data:[...this.state.data,this.state.last]
+                }
+            )
+        }
+        else{
+            this.setState(
+                {
+                    data:[...this.state.data]
+                }
+            )
+        }
+        
+
     }
     render() {
         return (
