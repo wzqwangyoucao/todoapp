@@ -62,7 +62,19 @@
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "eqeqeq": [
+        "off"
+      ],
+      "jsx-a11y/accessible-emoji": [
+        "off"
+      ],
+      "semi": [
+        "warn",
+        "never"
+      ]
+    }
   },
   "browserslist": [
     ">0.2%",

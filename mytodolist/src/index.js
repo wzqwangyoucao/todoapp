@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter,Route,Link,Redirect,Switch} from 'react-router-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import Mylist from './list.js'
 import './index.css'
 ReactDOM.render(
@@ -12,5 +12,4 @@ ReactDOM.render(
         </BrowserRouter>
     </div>
     , document.getElementById('root')
-);
-
+)
