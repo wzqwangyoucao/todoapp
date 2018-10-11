@@ -8,10 +8,14 @@ class Divfooter extends Component {
   }
 
   myClick(ev){
+    // 下面这段实现的方法不符合react的哲学
+    // 你需要根据当前的数据，来渲染内容，而不会直接操作dom
+    // 当前数据就是那个todo的列表，以及当前选项的状态（可以定义为一个state), 以数据为中心的观点在React中非常重要
+    // 所以这个组件需要修改
     let footer= document.querySelector('.div_footer')
     let children = footer.querySelectorAll('a')
     let target = ev.target
-    
+
     if(target.nodeName.toLowerCase() == 'a'){
       for(let i=0;i<children.length;i++){
         children[i].classList.remove('active')
@@ -41,7 +45,7 @@ class Divfooter extends Component {
 					<li><a>Active</a></li>
 					<li><a>Complete</a></li>
 				</ul>
-				
+
 			</div>
     )
   }
