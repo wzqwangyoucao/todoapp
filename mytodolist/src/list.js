@@ -88,7 +88,6 @@ class Mylist extends React.Component {
 	 * 过滤数据
 	 */
 	myfilter(a){
-		console.log(a)
 		let myownlist = this.state.list.filter(item => item.status==a)
 		this.setState({
 			mylist:myownlist
