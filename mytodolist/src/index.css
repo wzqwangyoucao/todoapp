@@ -81,10 +81,8 @@ h1 {
 	outline: none;
 }
 
-.div_listitem span.iconfont {
-	color: #5dc2af;
-	font-size: 26px;
-	text-align: center;
+.div_listitem li span.active {
+	background: #afe url(./choose.png) no-repeat center;
 }
 
 .div_listitem ul {

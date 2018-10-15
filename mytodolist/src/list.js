@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Divfooter from './div_footer'
-import Divmiddle from './div_middle'
-import Divheader from './div_header'
+import Divfooter from './Footer'
+import Divmiddle from './Middle'
+import Divheader from './Header'
 
 class Mylist extends React.Component {
   constructor(props) {
@@ -12,19 +12,20 @@ class Mylist extends React.Component {
 				{
 					id:0,
 					name:'吃饭饭',
-					status:0
+					status:false
 				},{
 					id:1,
 					name:'看书书',
-					status:0
+					status:false
 				},{
 					id:2,
 					name:'睡觉觉',
-					status:0
+					status:false
 				}
 			],
 			finished:0,
-			mylist:[]
+			mylist:[],
+			sele:0
 		}
 	}
 	/**
@@ -42,7 +43,15 @@ class Mylist extends React.Component {
 	 * 更新数据状态
 	 */
 	updateFinished(todoItem) {
-		var sum = 0
+		// let arr = this.state.list
+		// let sum = 0
+		// arr.reduce(function(prev, cur, index, arr) {
+		// 	console.log(prev,cur)
+		// 	return prev
+		//我明白prev是第一个数或者是上一个返回的数   curr是当前的数  但是我返回的上一个数是prev  这样就可以一直循环啊   不明白
+		// })
+
+		let sum = 0
 		this.state.list.forEach((item) => {
 			if (item.id === todoItem.id) {
 				item.status = todoItem.status
@@ -60,11 +69,11 @@ class Mylist extends React.Component {
 	 * 删除数据 
 	 */
 	updateTotal(todoItem) {
-		var obj = [], sum = 0
-		this.state.list.forEach((item) => {
-			if (item.id !== todoItem.id) {
-				obj.push(item)
-				if (item.status === 1) {
+		const obj = [], sum = 0
+		this.state.list.forEach((list) => {
+			if (list.id !== todoItem.id) {
+				obj.push(list)
+				if (list.status === 1) {
 					sum++
 				}
 			}
@@ -79,15 +88,22 @@ class Mylist extends React.Component {
 	 * 过滤数据
 	 */
 	myfilter(a){
-		console.log(a)
 		let myownlist = this.state.list.filter(item => item.status==a)
-		console.log(myownlist)
 		this.setState({
 			mylist:myownlist
 		})
 	}
 
-  render() {
+	
+	/**
+	 *改变sele
+	*/
+	changeSele(a){
+		this.setState({
+			sele:a
+		})
+	}
+render() {
 		let items = this.state.mylist.length==0?this.state.list:this.state.mylist
       return (
           <div>
@@ -100,8 +116,8 @@ class Mylist extends React.Component {
 										{items.map((item,index)=>{
 											return (<Divmiddle 
 											item={item}  
-											finishedChange={this.updateFinished.bind(this)} 
-											totalChange={this.updateTotal.bind(this)}
+											onChangeItemState={this.updateFinished.bind(this)} 
+											onDelItem={this.updateTotal.bind(this)}
 											key={index}
 											></Divmiddle>)
 										})}
@@ -109,7 +125,7 @@ class Mylist extends React.Component {
 								</div>
 
 							{/*底部组件 */}
-							<Divfooter num={this.state.list.length-this.state.finished} myfilter={this.myfilter.bind(this)}/>
+							<Divfooter sele={this.state.sele} changeSele={this.changeSele.bind(this)} num={this.state.list.length-this.state.finished} myfilter={this.myfilter.bind(this)}/>
           </div>
       )
   }
