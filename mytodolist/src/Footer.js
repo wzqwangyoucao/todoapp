@@ -8,7 +8,7 @@ class Divfooter extends Component {
     }
   }
   
-  myClick(ev,a){
+  myClick(a){
     this.props.changeSele(a)
     this.setState({
       active : a
@@ -17,10 +17,10 @@ class Divfooter extends Component {
       this.props.myfilter(null)
     }
     else if(this.props.sele === 1){
-      this.props.myfilter(1)
+      this.props.myfilter(true)
     }
     else if(this.props.sele === 2){
-      this.props.myfilter(0)
+      this.props.myfilter(false)
     }
   }
 
@@ -32,9 +32,9 @@ class Divfooter extends Component {
 				<label> {this.props.num} item left</label>
 
 				<ul>
-					<li onClick={(ev)=>this.myClick(ev,0)}><a className={ 0 === active ? 'active' : '' } >All</a></li>
-					<li onClick={(ev)=>this.myClick(ev,1)}><a className={ 1 === active ? 'active' : '' } >Active</a></li>
-					<li onClick={(ev)=>this.myClick(ev,2)}><a className={ 2 === active ? 'active' : '' } >Complete</a></li>
+					<li onClick={(ev)=>this.myClick(0)}><a className={ 0 === active ? 'active' : '' } >All</a></li>
+					<li onClick={(ev)=>this.myClick(1)}><a className={ 1 === active ? 'active' : '' } >Active</a></li>
+					<li onClick={(ev)=>this.myClick(2)}><a className={ 2 === active ? 'active' : '' } >Complete</a></li>
 				</ul>
 				
 			</div>
